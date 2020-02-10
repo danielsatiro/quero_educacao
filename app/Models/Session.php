@@ -25,6 +25,9 @@ class Session
         $forgets = [];
         $startTalk = clone $this->sessionStart;
         foreach ($talks as $key => $talk) {
+            if (!$talk instanceof Talk) {
+                throw new \InvalidArgumentException('Invalid Talk');
+            }
             if ($talk->minutes > $this->sessionMinutes) {
                 continue;
             }

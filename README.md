@@ -7,8 +7,8 @@ docker-compose up -d
 
 ## Adicionar permissão de escrita nas pastas
 ```
-storage/logs
-storage/framework
+storage
+bootstrap/cache
 ```
 
 ## Testes
@@ -20,3 +20,4 @@ Relatório de cobertura será gerado na pasta "report"
 
 Endereço da aplicação:
 POST http://localhost/api/conferences/talks
+POST https://quero-educacao.satiro.me/api/conferences/talks

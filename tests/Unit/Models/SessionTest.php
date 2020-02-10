@@ -17,9 +17,19 @@ class SessionTest extends TestCase
     public function testAttributIsSetted()
     {
         $session = new Session(10, 60);
-        
+
         $this->assertInstanceOf(Collection::class, $session->talks);
         $this->assertInstanceOf(Carbon::class, $session->sessionStart);
         $this->assertEquals(60, $session->sessionMinutes);
+    }
+
+    public function testInvalidTalkInCollection()
+    {
+        $this->expectException(\InvalidArgumentException::class);
+
+        $session = new Session(10, 160);
+
+        $talks = collect([1, 2, 3]);
+        $session->organizeSession($talks);
     }
 }
