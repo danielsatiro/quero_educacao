@@ -10,4 +10,19 @@ use Illuminate\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    /**
+    * @OA\Info(
+    *      version="1.0.0",
+    *      title="Gerenciamento de Palestras API",
+    *      description="API para geneciamento de palestras Quero Educação",
+    *      @OA\Contact(
+    *          email="danielsatiro2003@yahoo.com.br"
+    *      ),
+    *     @OA\License(
+    *         name="Apache 2.0",
+    *         url="http://www.apache.org/licenses/LICENSE-2.0.html"
+    *     )
+    * )
+    */
 }

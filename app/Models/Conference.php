@@ -4,10 +4,35 @@ namespace App\Models;
 
 use App\Models\Talk;
 
+/**
+ * Class Conference
+ *
+ * @package App\Models
+ *
+ * @author  Daniel Satiro <danielsatiro2003@yahoo.com.br>
+ * @OA\Schema(
+ *     title="Conference model",
+ *     description="Conference model",
+ * )
+ */
 class Conference
 {
     use GetAttributes;
 
+    /**
+     * @OA\Property(
+     *     title="Talk title",
+     *     description="Talk title",
+     *     @OA\Schema(
+     *         type="array",
+     *         @OA\Items(type="string")
+     *     ),
+     *     @OA\Items(type="string")
+     * )
+     *
+     * @var array
+     */
+    private $data;
     private $tracks;
     private $talks;
 
@@ -16,8 +41,9 @@ class Conference
         $this->tracks = [];
 
         $this->talks = collect();
+        $this->data = $talks['data'];
 
-        foreach ($talks as $value) {
+        foreach ($this->data as $value) {
             $this->talks->add(new Talk($value));
         }
     }

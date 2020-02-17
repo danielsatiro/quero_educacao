@@ -6,7 +6,7 @@ namespace App\Models;
 class Talk
 {
     use GetAttributes;
-    
+
     private $title;
     private $minutes;
 
@@ -19,7 +19,7 @@ class Talk
         $this->minutes = $this->getTitleMinutes();
     }
 
-    public function getTitleMinutes()
+    public function getTitleMinutes() : int
     {
         $matches = [];
         preg_match('/\d+(?!.*\d)|' . self::LIGHTNING_STR . '/', $this->title, $matches);

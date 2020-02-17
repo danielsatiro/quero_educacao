@@ -15,6 +15,26 @@ class ConferenceController extends Controller
     }
 
     /**
+     * * @OA\Post(
+     *      path="/api/conferences/talks",
+     *      operationId="store",
+     *      tags={"conferences"},
+     *      summary="talk list",
+     *      @OA\Response(
+     *          response=200,
+     *          description="successful operation"
+     *       ),
+     *     @OA\Response(
+     *         response=422,
+     *         description="Validation exception"
+     *     ),
+     *      @OA\RequestBody(
+     *         description="title of talks",
+     *         required=true,
+     *         @OA\JsonContent(ref="#/components/schemas/Conference"),
+     *     )
+     * )
+     *
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -30,7 +50,7 @@ class ConferenceController extends Controller
 
         $talks = $request->all();
 
-        $conference = new Conference($talks['data']);
+        $conference = new Conference($talks);
         $conference->organizeTracks();
 
         return (ConferenceResource::collection($conference->tracks))
